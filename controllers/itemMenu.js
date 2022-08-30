@@ -39,7 +39,8 @@ exports.atualizar = (req,res)=>{
         nome: req.body.nome,
         classe: req.body.classe,
         href:req.body.href,
-        img:req.body.img
+        img:req.body.img,
+        link:req.body.link
       }
     }).then(docs=>{
       if (docs===null){

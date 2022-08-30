@@ -6,7 +6,8 @@ var itemMenuSchema = new Schema({
     nome:{type:String,require:true},
     classe:{type:String,require:true},
     href:{type:String,require:true},
-    img:{type:String,require:true}
+    img:{type:String,require:true},
+    link:{type:String,require:true}
 })
 
 module.exports = mongoose.model('ItemMenu',itemMenuSchema)

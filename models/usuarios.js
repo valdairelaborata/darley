@@ -5,7 +5,10 @@ var usuarioSchema = new Schema({
     nome:{type:String,require:true},
     login:{type:String,require:true},
     senha:{type:String},
-    dataCriacao:{type:Date,default:Date.now()},
+    img:{type:String},
+    funcao:{type:String},
+    setor:{type:String},
+    dataCriacao:{type:Date,default:Date.now()}
 })
 
 module.exports = mongoose.model('Usuarios',usuarioSchema)

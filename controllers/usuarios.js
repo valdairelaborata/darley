@@ -40,6 +40,10 @@ exports.atualizar = (req,res)=>{
         nome: req.body.nome,
         usuario: req.body.usuario,
         senha: req.body.senha,
+        login:req.body.login,
+        img:req.body.img,
+        funcao:req.body.funcao,
+        setor:req.body.setor
       }
     }).then(docs=>{
       if (docs===null){

@@ -21,8 +21,8 @@ exports.listar = async (req,res)=>{
     console.log((operacoes))
 }
 exports.buscar = async (req,res)=>{
-  // #swagger.tags = ['Comarcas']
-  // #swagger.description = "Pesquisar uma comarca" 
+  // #swagger.tags = ['Operacoes']
+  // #swagger.description = "Pesquisar uma operacao" 
   let operacoes = await Operacoes.find({codigo:req.params.codigo})
   res.status(200).send(operacoes)
   console.log((operacoes))
@@ -32,7 +32,7 @@ exports.buscar = async (req,res)=>{
 
 
 exports.atualizar = (req,res)=>{
-  Comarcas.findOneAndUpdate(
+  Operacoes.findOneAndUpdate(
     { codigo: req.params.codigo },
     {
       $set: {

@@ -2,6 +2,7 @@ const express = require('express')
 var cors = require('cors')
 const app = express()
 app.use(cors({credentials: true, origin: 'https://catenampmg.herokuapp.com/'}));
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./swagger_output.json')
 const routeComarcas = require('./routes/comarcas')

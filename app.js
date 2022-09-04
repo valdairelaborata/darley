@@ -1,7 +1,12 @@
 const express = require('express')
-const cors = require('cors');
+const cors = require('cors');  
+const app = express() 
 
-const app = express()
+app.use((req,res,next)=>{
+res.header('Access-Control-Allow-Origin','*')
+app.use(cors())
+next();
+});
 
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./swagger_output.json')
@@ -19,13 +24,6 @@ const url ='mongodb+srv://darleydias:Catelecom()123@cluster0.vwjrt2z.mongodb.net
 app.use('/static',express.static('public'))
 app.use(express.json()) // pega o valor do body e transforma em json
 app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
-app.use((req, res, next) => {
-	  res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Origin : https://localhost:3000")
-	  res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE,PATH');
-    app.use(cors());
-    next();
-});
 app.use('/usuarios',routeUsuarios)
 app.use('/login',routeLogin)
 app.use('/operacoes',routeOperacoes)

@@ -30,7 +30,6 @@ exports.buscar = async (req,res)=>{
 
 // ###########  ATUALIZAR #################
 
-
 exports.atualizar = (req,res)=>{
   Operacoes.findOneAndUpdate(
     { codigo: req.params.codigo },
@@ -51,7 +50,6 @@ exports.atualizar = (req,res)=>{
   )
   
 }
-
 exports.apagar = async (req,res)=>{
   // #swagger.tags = ['Operacoes']
   // #swagger.description = "Apagar uma Operacao" 
@@ -60,10 +58,10 @@ exports.apagar = async (req,res)=>{
   .then(docs=>{
           if (docs===null){
               console.log("codigo não exite");
-              res.status(201).send("codigo não exite")
+              res.status(403).send("codigo não exite")
           }else{
               console.log(" Apagado : ", docs);
-              res.status(200).send("Apagado")
+              res.status(201).send("Apagado")
           }  
   })
   .catch(error=>{

@@ -10,9 +10,9 @@ exports.login = async (req,res)=>{
             var token = jwt.sign({id:req.body.login},"yhvh77",{expiresIn:'1m'})
             res.status(200).send(token)
         }else{
-            res.status(403).send("Senha Inválida")
+            res.status(403).send({error:"Senha Inválida"})
         }
     }else{
-        res.status(403).send("Usuário nao existente")
+        res.status(404).send({error:"Usuário nao existente"})
     }
 }

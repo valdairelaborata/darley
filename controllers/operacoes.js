@@ -12,20 +12,19 @@ exports.incluir = async (req,res)=>{
     }
   })
 }
-
 exports.listar = async (req,res)=>{
     // #swagger.tags = ['Operações']
     // #swagger.description = "lista de operações"
     let operacoes = await Operacoes.find({})
-    res.status(200).send(operacoes)
-    console.log((operacoes))
+    console.log((typeof operacoes))
+    // console.log((operacoes))
 }
 exports.buscar = async (req,res)=>{
   // #swagger.tags = ['Operacoes']
   // #swagger.description = "Pesquisar uma operacao" 
   let operacoes = await Operacoes.find({codigo:req.params.codigo})
   res.status(200).send(operacoes)
-  console.log((operacoes))
+  
 }
 
 // ###########  ATUALIZAR #################
@@ -36,7 +35,7 @@ exports.atualizar = (req,res)=>{
     {
       $set: {
         nome: req.body.nome,
-        descricao: req.body.descri
+        descricao: req.body.descricao
       }
     }).then(docs=>{
       if (docs===null){
@@ -45,7 +44,7 @@ exports.atualizar = (req,res)=>{
       }else{
           console.log(" Atualizado : ", docs);
           res.status(200).send("Atualizado")
-      }  ole.log("Operacao atualizada")
+      }  console.log("Operacao atualizada")
     }
   )
   

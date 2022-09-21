@@ -1,9 +1,6 @@
 const express = require('express')
 const app = express() 
-
-const cors = require("cors")
-
-app.use(cors())
+var cors = require("cors")
 
 const swaggerUi = require('swagger-ui-express')
 const swaggerDocument = require('./swagger_output.json')
@@ -18,19 +15,6 @@ const middlewares = require('./middlewares/middlewares')
 const mongoose = require('mongoose')
 
 const url ='mongodb+srv://darleydias:Catelecom()123@cluster0.vwjrt2z.mongodb.net/?retryWrites=true&w=majority'
- 
-app.use('/static',express.static('public'))
-app.use(express.json()) // pega o valor do body e transforma em json
-app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
-app.use('/usuarios',routeUsuarios)
-app.use('/login',routeLogin)
-app.use('/operacoes',routeOperacoes)
-// app.use('/operacoes',middlewares.isAuth,routeOperacoes)
-app.use('/comarcas',routeComarcas)
-app.use('/evidencias',routeEvidencias)
-app.use('/itemMenu',routeItemMenu)
-app.use('/tiposEvidencia',routeTipoEvidencias)
-
 
 //  ###### Banco de dados
 
@@ -44,6 +28,21 @@ mongoose.connection.on('error',(erro)=>{
 mongoose.connect(url,options)
 
 //  ###### Fim Banco de dados
+
+
+app.use(cors())
+
+app.use('/static',express.static('public'))
+app.use(express.json()) // pega o valor do body e transforma em json
+app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
+app.use('/usuarios',routeUsuarios)
+app.use('/login',routeLogin)
+app.use('/operacoes',routeOperacoes)
+// app.use('/operacoes',middlewares.isAuth,routeOperacoes)
+app.use('/comarcas',routeComarcas)
+app.use('/evidencias',routeEvidencias)
+app.use('/itemMenu',routeItemMenu)
+app.use('/tiposEvidencia',routeTipoEvidencias)
 
 
 app.get('/', (req, res)=> {

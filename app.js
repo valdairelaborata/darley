@@ -31,7 +31,7 @@ mongoose.connect(url,options)
 
 
 app.use(cors({
-  origin: 'http://194.163.44.230:3000'
+  origin: 'http://localhost:3000'
 }))
 
 app.use('/static',express.static('public'))
@@ -39,8 +39,8 @@ app.use(express.json()) // pega o valor do body e transforma em json
 app.use('/api-docs',swaggerUi.serve,swaggerUi.setup(swaggerDocument))
 app.use('/usuarios',routeUsuarios)
 app.use('/login',routeLogin)
-app.use('/operacoes',routeOperacoes)
-// app.use('/operacoes',middlewares.isAuth,routeOperacoes)
+// app.use('/operacoes',routeOperacoes)
+app.use('/operacoes',middlewares.isAuth,routeOperacoes)
 app.use('/comarcas',routeComarcas)
 app.use('/evidencias',routeEvidencias)
 app.use('/itemMenu',routeItemMenu)

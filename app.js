@@ -31,7 +31,7 @@ mongoose.connect(url,options)
 
 
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: '*'
 }))
 
 app.use('/static',express.static('public'))

@@ -30,7 +30,9 @@ mongoose.connect(url,options)
 //  ###### Fim Banco de dados
 
 
-app.use(cors())
+app.use(cors({
+  origin: 'http://194.163.44.230:3000'
+}))
 
 app.use('/static',express.static('public'))
 app.use(express.json()) // pega o valor do body e transforma em json

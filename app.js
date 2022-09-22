@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+
 var cors = require('cors')
 
 const swaggerUi = require('swagger-ui-express')
@@ -12,6 +13,7 @@ const routeLogin = require('./routes/login')
 const routeOperacoes = require('./routes/operacoes')
 const routeItemMenu = require('./routes/itemMenu')
 const middlewares = require('./middlewares/middlewares')
+
 const mongoose = require('mongoose')
 
 const url = 'mongodb+srv://darleydias:Catelecom()123@cluster0.vwjrt2z.mongodb.net/?retryWrites=true&w=majority'
@@ -33,16 +35,19 @@ mongoose.connect(url, options)
 app.use(cors())
 
 app.use('/static', express.static('public'))
+
 app.use(express.json()) // pega o valor do body e transforma em json
+
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+
 app.use('/usuarios', routeUsuarios)
 app.use('/login', routeLogin)
 // app.use('/operacoes',routeOperacoes)
-app.use('/operacoes', middlewares.isAuth, routeOperacoes)
+// app.use('/operacoes', middlewares.isAuth, routeOperacoes)
 app.use('/comarcas', routeComarcas)
-app.use('/evidencias', routeEvidencias)
-app.use('/itemMenu', routeItemMenu)
-app.use('/tiposEvidencia', routeTipoEvidencias)
+// app.use('/evidencias', routeEvidencias)
+// app.use('/itemMenu', routeItemMenu)
+// app.use('/tiposEvidencia', routeTipoEvidencias)
 
 
 app.get('/', (req, res) => {
@@ -52,4 +57,6 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(process.env.PORT || 3001)
+// app.listen(process.env.PORT || 3001)
+
+app.listen(process.env.PORT || 3000);

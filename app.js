@@ -42,7 +42,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use('/usuarios', routeUsuarios)
 app.use('/login', routeLogin)
-// app.use('/operacoes',routeOperacoes)
+app.use('/operacoes', routeOperacoes)
 // app.use('/operacoes', middlewares.isAuth, routeOperacoes)
 app.use('/comarcas', routeComarcas)
 // app.use('/evidencias', routeEvidencias)
